@@ -1,7 +1,8 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import {Provider} from 'react-redux';
 import {NavigationContainer, DarkTheme} from '@react-navigation/native';
-import {BottomNavTab} from './Navigation/Navigation';
+import {BottomNavTab, StackNavigation} from './Navigation/Navigation';
 import {store} from './redux/store';
 
 const AppTheme = {
@@ -19,7 +20,8 @@ function App() {
   return (
     <Provider store={store}>
       <NavigationContainer theme={AppTheme}>
-        <BottomNavTab />
+        {/* <BottomNavTab /> */}
+        <StackNavigation />
       </NavigationContainer>
     </Provider>
   );

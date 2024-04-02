@@ -28,13 +28,14 @@ const DiscoverScreen = () => {
   const {data: reviewData} = useSelector(state => state.getTopReview);
 
   useEffect(() => {
-    if (data.length === 0) {
-      dispatch(getTopAnimeAction('airing'));
-    } else if (moviesData.length === 0) {
-      dispatch(getTopMoviesAction('airing'));
-    } else if (mangaData.length === 0) {
+    console.log(data.length)
+    if (data?.length === 0) {
+      dispatch(getTopAnimeAction('bypopularity', 'pg13'));
+    } else if (moviesData?.length === 0) {
+      dispatch(getTopMoviesAction('bypopularity'));
+    } else if (mangaData?.length === 0) {
       dispatch(getTopMangaAction());
-    } else if (reviewData.length === 0) {
+    } else if (reviewData?.length === 0) {
       dispatch(getTopReviewsAction());
     }
   }, [data, moviesData, mangaData, reviewData]);
@@ -44,7 +45,7 @@ const DiscoverScreen = () => {
       <HomeScreenLane title={'Top Anime'} data={data} />
       <HomeScreenLane title={'Top Movies'} data={moviesData} />
       <HomeScreenLane title={'Top Manga'} data={mangaData} />
-      <HomeReviewLane reviewData={reviewData}/>
+      <HomeReviewLane reviewData={reviewData} />
     </ScrollView>
   );
 };
